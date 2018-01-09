@@ -14,14 +14,14 @@
     </Window.DataContext>
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <!--<StackPanel>
+        <StackPanel>
             <Label Content="Username"/>
             <TextBox Text="{Binding Username}"/>
             <Label Content="Password"/>
             <TextBox Text="{Binding Password}"/>
             <Button Command="{Binding LoginCommand}" Content="Login"/>
             <Button Command="{Binding CreateCommand}" Content="Opret"/>
-        </StackPanel>-->
+        </StackPanel>
 
         <!--<Popup IsOpen="True">
             <StackPanel>

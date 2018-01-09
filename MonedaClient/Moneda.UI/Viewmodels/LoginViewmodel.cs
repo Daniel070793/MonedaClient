@@ -1,4 +1,5 @@
 ﻿using Moneda.UI.Utilities;
+using Moneda.UI.Views;
 using MonedaClient.Model;
 using System;
 using System.Collections.Generic;
@@ -30,8 +31,7 @@ namespace Moneda.UI.Viewmodels
         {
             try
             {
-                await API.Post("login", new User { Username = _username, Password = _password });
-
+                await API.Post("login", new User { Username = _username, Password = _password });                
             }
             catch (HttpRequestException)
             {
