@@ -1,8 +1,8 @@
-﻿<Application x:Class="MonedaClient.UI.App"
+﻿<Application x:Class="Moneda.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MonedaClient.UI"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Moneda.UI"
+             StartupUri="Views/LoginView.xaml">
     <Application.Resources>
          
     </Application.Resources>

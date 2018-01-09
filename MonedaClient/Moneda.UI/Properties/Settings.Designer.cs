@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MonedaClient.UI.Properties
+namespace Moneda.UI.Properties
 {
 
 
