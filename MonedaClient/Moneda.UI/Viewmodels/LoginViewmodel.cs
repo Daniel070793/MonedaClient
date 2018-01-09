@@ -25,6 +25,7 @@ namespace Moneda.UI.Viewmodels
             CreateCommand = new RelayCommand(Create);
         }
 
+        //TODO: mediator pattern til at kontrollere popups og navigation?  
         async void Login(object obj)
         {
             try
