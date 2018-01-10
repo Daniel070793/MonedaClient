@@ -38,9 +38,15 @@ namespace Moneda.UI.Views
             MessageBox.Show(message, "ok");
         }
 
-        public void Navigate(Page page, User obj)
+        public void Navigate(string page, User obj)
         {
-            App.Current.MainWindow.Content = page;
+            switch (page)
+            {
+                case "Dashboard":
+                    App.Current.MainWindow.Content = new DashboardView();
+                    break;               
+            }
+            
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Moneda.UI.Utilities
             }
         }
 
-        public void PublishNavigation<T2>(Page page, T2 obj)
+        public void PublishNavigation<T2>(string page, T2 obj)
         {
             foreach (var item in subscribers.OfType<IListen<T2>>())
             {

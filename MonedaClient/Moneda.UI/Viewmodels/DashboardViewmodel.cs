@@ -1,4 +1,5 @@
-﻿using MonedaClient.Model;
+﻿using Moneda.UI.Utilities;
+using MonedaClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,13 +11,15 @@ namespace Moneda.UI.Viewmodels
 {
     public class DashboardViewmodel : ViewmodelBase
     {
-        private ObservableCollection<Account> _accounts;
-        private Account _selectedAccount;
-        private ObservableCollection<CashFlow> _fixedCashFlows;
-        private CashFlow _selectedCashFlow;
+        EventAggregator _eventAggregator;
+        ObservableCollection<Account> _accounts;
+        Account _selectedAccount;
+        ObservableCollection<CashFlow> _fixedCashFlows;
+        CashFlow _selectedCashFlow;
 
         public DashboardViewmodel()
         {
+            _eventAggregator = new EventAggregator();
             _fixedCashFlows = new ObservableCollection<CashFlow>();
             _accounts = new ObservableCollection<Account>();
             ObservableCollection<CashFlow> _transactions = new ObservableCollection<CashFlow>();
@@ -30,9 +33,9 @@ namespace Moneda.UI.Viewmodels
 
         private void SortCashflows()
         {
-            if(_selectedAccount.Transactions != null)
-            {
-                _fixedCashFlows.Clear();
+            _fixedCashFlows.Clear();
+            if (_selectedAccount.Transactions != null)
+            {               
                 foreach (var cash in _selectedAccount.Transactions)
                 {
                     if (cash.Frequency != FrequencyEnum.Single)
@@ -58,8 +61,8 @@ namespace Moneda.UI.Viewmodels
             set
             {
                 _selectedAccount = value;
-                SortCashflows();
                 OnPropertyChanged();
+                SortCashflows();
             }
         }
         public ObservableCollection<CashFlow> FixedCashFlows

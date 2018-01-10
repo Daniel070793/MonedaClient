@@ -14,6 +14,6 @@ namespace Moneda.UI.Utilities
     public interface IListen<T1> : IListen
     {
         void DisplayMessage(string message);
-        void Navigate(Page page, T1 obj);
+        void Navigate(string page, T1 obj);
     }
 }

@@ -39,7 +39,7 @@
         <StackPanel Grid.Row="2" >
             <Label Content="Faste overførsler" HorizontalAlignment="Center" FontSize="20"/>
             <Grid>
-                <ListView ItemsSource="{Binding FixedCashFlows}">
+                <ListView ItemsSource="{Binding FixedCashFlows}" SelectedItem="{Binding SelectedCashFlow}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Description}"/>

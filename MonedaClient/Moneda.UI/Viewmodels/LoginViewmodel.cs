@@ -35,7 +35,7 @@ namespace Moneda.UI.Viewmodels
             {
                 await API.Post("login", new User { Username = _username, Password = _password });
                 //TODO fiks navigation
-                eventAggregator.PublishNavigation(new DashboardView(), new User());
+                eventAggregator.PublishNavigation("Dashboard", new User());
             }
             catch (HttpRequestException)
             {
