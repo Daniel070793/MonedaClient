@@ -25,9 +25,9 @@ namespace Moneda.UI.Utilities
             subscribers.Remove(model);
         }
 
-        public void PublishMessage(string obj)
+        public void PublishMessage<T1>(string obj)
         {
-            foreach(var item in subscribers.OfType<IListen<string>>())
+            foreach(var item in subscribers.OfType<IListen<T1>>())
             {
                 item.DisplayMessage(obj);
             }
