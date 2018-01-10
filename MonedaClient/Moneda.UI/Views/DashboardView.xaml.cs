@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Moneda.UI.Utilities;
+using MonedaClient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,30 @@ namespace Moneda.UI.Views
     /// <summary>
     /// Interaction logic for DashboardView.xaml
     /// </summary>
-    public partial class DashboardView : Page
+    public partial class DashboardView : Page, IListen<CashFlow>
     {
+        EventAggregator _eventAggregrator;
         public DashboardView()
         {
             InitializeComponent();
+            _eventAggregrator = new EventAggregator();
+            _eventAggregrator.Subscribe(this);
+        }
+
+        public void DisplayMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Navigate(string page, CashFlow obj)
+        {
+            switch (page)
+            {
+                case "ViewCashFlow":
+                    Window window = new ViewCashFlowView();
+                    window.ShowDialog();
+                    break;
+            }
         }
     }
 }

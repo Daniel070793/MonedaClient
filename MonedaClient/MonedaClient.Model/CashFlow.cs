@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,14 @@ namespace MonedaClient.Model
     }
     public enum FrequencyEnum
     {
-        Single, Weekly, Monthly, Quarterly, Yearly
+        [Description("Single")]
+        Single,
+        [Description("Single")]
+        Weekly,
+        [Description("Single")]
+        Monthly,
+        [Description("Single")]
+        Quarterly,
+        Yearly
     }
 }

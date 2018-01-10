@@ -52,6 +52,7 @@ namespace Moneda.UI.Viewmodels
             set
             {
                 _selectedCashFlow = value;
+                _eventAggregator.PublishNavigation("ViewCashFlow", _selectedCashFlow);
             }
         }
 

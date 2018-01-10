@@ -1,0 +1,69 @@
+﻿<Window x:Class="Moneda.UI.Views.ViewCashFlowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Moneda.UI.Views"
+        xmlns:models="clr-namespace:MonedaClient.Model;assembly=MonedaClient.Model"
+        xmlns:images="clr-namespace:Moneda.UI.Utilities"
+        xmlns:viewmodel="clr-namespace:Moneda.UI.Viewmodels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="ViewCashFlowView" Height="300" Width="300" WindowStartupLocation="CenterOwner" Topmost="True">
+
+    <Window.DataContext>
+        <viewmodel:DashboardViewmodel/>
+    </Window.DataContext>
+
+    <!--<Window.Resources>
+        <ResourceDictionary>
+            <models:FrequencyEnum x:Key="FreqEnum"></models:FrequencyEnum>
+        </ResourceDictionary>
+    </Window.Resources>-->
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:FrequencyEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+    <StackPanel>
+        <Label Content="{Binding SelectedCashFlow.Description}" FontSize="30"/>
+        <Separator/>
+        
+        <!--Amount-->
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Beløb"/>
+            <TextBox Text="hej med dig" HorizontalAlignment="Stretch"/>
+            <Button BorderThickness="0" Background="White">
+                <StackPanel>
+                    <Image Source="../Utilities/cancel-button.png" Height="10"></Image>
+                </StackPanel>
+            </Button>  
+        </StackPanel>
+        
+        <!--Frequency-->
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Frekvens"/>
+            <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedValue="{Binding SelectedCashFlow.Frequency}"/>
+        </StackPanel>
+        
+        <!--Account-->
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Konto"/>
+            
+        </StackPanel>
+
+        <!--Delete button-->
+        <Button Content="Slet" Background="Red" Foreground="White" Command="{Binding DeleteCashFlowCommand}"/>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Gem" Command="{Binding SaveCashFlowCommand}"/>
+            <Button Content="Annullér" Command="{Binding CancelCashFlowCommand}"/>
+        </StackPanel>
+        
+    </StackPanel>
+</Window>
