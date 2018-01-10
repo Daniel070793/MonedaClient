@@ -61,7 +61,9 @@
     </ApplicationDefinition>
     <Compile Include="Utilities\AmountConverter.cs" />
     <Compile Include="Utilities\APIAccess.cs" />
+    <Compile Include="Utilities\EventAggregator.cs" />
     <Compile Include="Utilities\IAPIAccess.cs" />
+    <Compile Include="Utilities\IListen.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="Viewmodels\DashboardViewmodel.cs" />
     <Compile Include="Viewmodels\LoginViewmodel.cs" />

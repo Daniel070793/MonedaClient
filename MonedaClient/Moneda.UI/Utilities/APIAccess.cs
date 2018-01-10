@@ -36,7 +36,7 @@ namespace Moneda.UI.Utilities
                     throw new Exception(message);
                 }
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException)
             {
                 // log exception (serilog?) 
                 throw new Exception("API Connection error");

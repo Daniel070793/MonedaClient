@@ -18,15 +18,17 @@ namespace Moneda.UI.Viewmodels
         string _username;
         string _password;
 
+        EventAggregator eventAggregator;
+
         public LoginViewmodel()
         {
             API = new APIAccess();
 
             LoginCommand = new RelayCommand(Login,CanLogin);
             CreateCommand = new RelayCommand(Create);
+            eventAggregator = new EventAggregator();
         }
 
-        //TODO: mediator pattern til at kontrollere popups og navigation?  
         async void Login(object obj)
         {
             try
@@ -35,17 +37,17 @@ namespace Moneda.UI.Viewmodels
             }
             catch (HttpRequestException)
             {
-                System.Windows.MessageBox.Show("Ingen forbindelse til API");
+                eventAggregator.Publish("Ingen forbindelse til API");
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show(e.Message);
+                eventAggregator.Publish(e.Message);
             }
         }
 
         void Create(object obj)
         {
-
+            //eventAggregator.Publish("Bruger oprettet");
         }
 
         bool CanLogin(object obj)

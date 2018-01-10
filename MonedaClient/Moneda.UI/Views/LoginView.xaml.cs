@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Moneda.UI.Utilities;
+using MonedaClient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +23,24 @@ namespace Moneda.UI.Views
     /// 
     
     //TODO: textbox focus fix
-    public partial class LoginView : Window
+    public partial class LoginView : Window, IListen<User>
     {
+        EventAggregator eventAggregator;
         public LoginView()
         {
             InitializeComponent();
+            eventAggregator = new EventAggregator();
+            eventAggregator.Subscribe(this);
+        }
+
+        public void DisplayMessage(string message)
+        {
+            MessageBox.Show(message, "ok");
+        }
+
+        public void Navigate(Page page, User obj)
+        {
+            App.Current.MainWindow.Content = page;
         }
     }
 }

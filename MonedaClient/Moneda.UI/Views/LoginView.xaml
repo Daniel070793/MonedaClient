@@ -22,30 +22,6 @@
             <Button Command="{Binding LoginCommand}" Content="Login"/>
             <Button Command="{Binding CreateCommand}" Content="Opret"/>
         </StackPanel>
-
-        <!--<Popup IsOpen="True">
-            <StackPanel>
-                <TextBlock Background="AntiqueWhite" Padding="100,100,100,100">hej</TextBlock>
-                <Button Content="Hej"></Button>
-            </StackPanel>
-            
-        </Popup>-->
-        <Popup AllowsTransparency="True" Height="100" HorizontalOffset="1cm" Name="myPopup" IsOpen="True" 
-                   Placement="Right" StaysOpen="True" Width="200" >
-            <Border BorderBrush="Black" BorderThickness="2">
-                <DockPanel Background="White" LastChildFill="True">
-                    <TextBlock Background="AliceBlue" DockPanel.Dock="Top" 
-                                   FontSize="16" HorizontalAlignment="Stretch" 
-                                   Margin="5" Text="A WPF Popup" />
-                    <Button Content="Close" 
-                                DockPanel.Dock="Bottom" Margin="5" 
-                                HorizontalAlignment="Right" MaxHeight="23"/>
-
-                </DockPanel>
-            </Border>
-        </Popup>
     </StackPanel>
-    
 
-    
 </Window>
