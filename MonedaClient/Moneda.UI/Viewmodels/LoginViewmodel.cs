@@ -39,11 +39,11 @@ namespace Moneda.UI.Viewmodels
             }
             catch (HttpRequestException)
             {
-                eventAggregator.PublishMessage("Ingen forbindelse til API");
+                eventAggregator.PublishMessage<User>("Ingen forbindelse til API");
             }
             catch (Exception e)
             {
-                eventAggregator.PublishMessage(e.Message);
+                eventAggregator.PublishMessage<User>(e.Message);
             }
         }
 

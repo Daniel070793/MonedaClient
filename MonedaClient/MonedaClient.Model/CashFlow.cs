@@ -11,8 +11,12 @@ namespace MonedaClient.Model
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public string Description { get; set; }
-        public virtual Frequency Frequency { get; set; }
-        public virtual User User { get; set; }
-        public virtual Account Account { get; set; }
+        public FrequencyEnum Frequency { get; set; }
+        public User User { get; set; }
+        public Account Account { get; set; }
+    }
+    public enum FrequencyEnum
+    {
+        Single, Weekly, Monthly, Quarterly, Yearly
     }
 }
