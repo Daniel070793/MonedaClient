@@ -13,7 +13,7 @@ namespace Moneda.UI.Utilities
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if((decimal)value == 1000)
+            if ((decimal)value < 0)
             {
                 return new SolidColorBrush(Colors.Red);
             }

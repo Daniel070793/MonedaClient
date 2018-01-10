@@ -46,7 +46,7 @@
                 <ListView ItemsSource="{Binding SelectedAccount.Transactions}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Amount" Width="120" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumn Header="Amount" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <!--Fiks rød farve på amount ift. converter-->
                                     <DataTemplate>
