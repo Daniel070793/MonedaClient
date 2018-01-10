@@ -36,11 +36,23 @@
         </StackPanel>
         <StackPanel Background="CadetBlue" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Stretch"></StackPanel>
         <StackPanel Background="CadetBlue" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Stretch"></StackPanel>
-        <StackPanel Grid.Row="2" ></StackPanel>
+        <StackPanel Grid.Row="2" >
+            <Label Content="Faste overførsler" HorizontalAlignment="Center" FontSize="20"/>
+            <Grid>
+                <ListView ItemsSource="{Binding FixedCashFlows}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="Frekvens" DisplayMemberBinding="{Binding Frequency}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </StackPanel>
         <StackPanel  Grid.Column="2" >
             <StackPanel Orientation="Horizontal">
-                <Label Content="{Binding SelectedAccount.Name}"/>
-                <Label Content="{Binding SelectedAccount.Balance}"/>
+                <Label Content="{Binding SelectedAccount.Name, FallbackValue=''}"/>
+                <Label Content="{Binding SelectedAccount.Balance, FallbackValue=''}"/>
             </StackPanel>
             <Grid>
                 <ListView ItemsSource="{Binding SelectedAccount.Transactions}">
@@ -48,7 +60,6 @@
                         <GridView>
                             <GridViewColumn Header="Amount" Width="120">
                                 <GridViewColumn.CellTemplate>
-                                    <!--Fiks rød farve på amount ift. converter-->
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Amount}" Foreground="{Binding Amount, Converter={StaticResource AmountColor}}"></TextBlock>
                                     </DataTemplate>
