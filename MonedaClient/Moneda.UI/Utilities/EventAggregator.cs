@@ -41,5 +41,4 @@ namespace Moneda.UI.Utilities
             }
         }
     }
-    
 }
