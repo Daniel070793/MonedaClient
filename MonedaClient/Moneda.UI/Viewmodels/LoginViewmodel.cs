@@ -33,15 +33,17 @@ namespace Moneda.UI.Viewmodels
         {
             try
             {
-                await API.Post("login", new User { Username = _username, Password = _password });                
+                await API.Post("login", new User { Username = _username, Password = _password });
+                //TODO fiks navigation
+                eventAggregator.PublishNavigation(new DashboardView(), new User());
             }
             catch (HttpRequestException)
             {
-                eventAggregator.Publish("Ingen forbindelse til API");
+                eventAggregator.PublishMessage("Ingen forbindelse til API");
             }
             catch (Exception e)
             {
-                eventAggregator.Publish(e.Message);
+                eventAggregator.PublishMessage(e.Message);
             }
         }
 

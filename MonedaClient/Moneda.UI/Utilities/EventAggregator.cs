@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Moneda.UI.Utilities
 {
@@ -32,11 +33,11 @@ namespace Moneda.UI.Utilities
             }
         }
 
-        public void PublishNavigation<T1, T2>(T1 page, T2 obj)
+        public void PublishNavigation<T2>(Page page, T2 obj)
         {
-            foreach (var item in subscribers.OfType<IListen<T1>>())
+            foreach (var item in subscribers.OfType<IListen<T2>>())
             {
-                item.Handle(obj);
+                item.Navigate(page, obj);
             }
         }
     }
