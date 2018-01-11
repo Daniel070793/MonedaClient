@@ -7,11 +7,9 @@ using System.Windows.Controls;
 
 namespace Moneda.UI.Utilities
 {
-    public interface IListen{}
-
-    public interface IListen<T1> : IListen
+    public interface IListen
     {
-        void DisplayMessage(string message);
-        void Navigate(string page, T1 obj);
+        void HandleMessage(string data);
+        void HandleNavigation(string message, object data);
     }
 }

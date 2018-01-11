@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moneda.UI.Viewmodels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace Moneda.UI.Views
     /// </summary>
     public partial class ViewCashFlowView : Window
     {
-        public ViewCashFlowView()
+        public ViewCashFlowView(DashboardViewmodel vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

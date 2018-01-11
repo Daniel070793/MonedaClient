@@ -11,10 +11,6 @@
         mc:Ignorable="d"
         Title="ViewCashFlowView" Height="300" Width="300" WindowStartupLocation="CenterOwner" Topmost="True">
 
-    <Window.DataContext>
-        <viewmodel:DashboardViewmodel/>
-    </Window.DataContext>
-
     <!--<Window.Resources>
         <ResourceDictionary>
             <models:FrequencyEnum x:Key="FreqEnum"></models:FrequencyEnum>
@@ -37,7 +33,7 @@
         <!--Amount-->
         <StackPanel Orientation="Horizontal">
             <Label Content="Beløb"/>
-            <TextBox Text="hej med dig" HorizontalAlignment="Stretch"/>
+            <TextBox Text="{Binding SelectedCashFlow.Amount}" HorizontalAlignment="Stretch"/>
             <Button BorderThickness="0" Background="White">
                 <StackPanel>
                     <Image Source="../Utilities/cancel-button.png" Height="10"></Image>
@@ -54,6 +50,7 @@
         <!--Account-->
         <StackPanel Orientation="Horizontal">
             <Label Content="Konto"/>
+            <ComboBox ItemsSource="{Binding Accounts}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedAccount}"/>
             
         </StackPanel>
 

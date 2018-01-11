@@ -1,19 +1,9 @@
-﻿using Moneda.UI.Utilities;
+﻿using Microsoft.Practices.Unity;
+using Moneda.UI.Utilities;
 using MonedaClient.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System;
+using Moneda.UI.Viewmodels;
 
 namespace Moneda.UI.Views
 {
@@ -23,30 +13,36 @@ namespace Moneda.UI.Views
     /// 
     
     //TODO: textbox focus fix
-    public partial class LoginView : Window, IListen<User>
+    public partial class LoginView : Window, IListen
     {
-        EventAggregator eventAggregator;
+        IEventAggregator _eventAggregator;
+
         public LoginView()
-        {
+        { 
             InitializeComponent();
-            eventAggregator = new EventAggregator();
-            eventAggregator.Subscribe(this);
+
+            _eventAggregator = new EventAggregator();
+            _eventAggregator.Subscribe("LoginViewError", this);
+            _eventAggregator.Subscribe("Dashboard", this);
         }
 
-        public void DisplayMessage(string message)
+        public void HandleMessage(string data)
         {
-            MessageBox.Show(message, "ok");
+            MessageBox.Show(data,"Fejl");
         }
 
-        public void Navigate(string page, User obj)
+        public void HandleNavigation(string message, object data)
         {
-            switch (page)
+            switch (message)
             {
                 case "Dashboard":
-                    App.Current.MainWindow.Content = new DashboardView();
-                    break;               
+                    _eventAggregator.Unsubscribe(message);
+                    DashboardView dashboard = new DashboardView();
+                    //TODO pass user to vm
+                    dashboard.DataContext = new DashboardViewmodel();             
+                    Application.Current.MainWindow.Content = dashboard;
+                    break;
             }
-            
         }
     }
 }

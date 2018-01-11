@@ -1,43 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace Moneda.UI.Utilities
 {
-    public class EventAggregator
+    public class EventAggregator : IEventAggregator
     {
-        static List<IListen> subscribers;
-        public EventAggregator()
+        public static Dictionary<string, IListen> subscribers = new Dictionary<string, IListen>();
+
+        public void Subscribe(string message, IListen subscriber)
         {
-            subscribers = new List<IListen>();
+            subscribers.Add(message,subscriber);
         }
 
-        public void Subscribe(IListen model)
+        public void Unsubscribe(string message)
         {
-            subscribers.Add(model);
+            subscribers.Remove(message);
         }
 
-        public void Unsubscribe(IListen model)
+        public void PublishMessage(string receiver, string data)
         {
-            subscribers.Remove(model);
-        }
+            Dictionary<string, IListen> subs = new Dictionary<string, IListen>(subscribers);
 
-        public void PublishMessage<T1>(string obj)
-        {
-            foreach(var item in subscribers.OfType<IListen<T1>>())
+            foreach (var item in subs)
             {
-                item.DisplayMessage(obj);
+                if(item.Key == receiver)
+                {
+                    item.Value.HandleMessage(data);
+                }
             }
         }
 
-        public void PublishNavigation<T2>(string page, T2 obj)
+        public void PublishNavigation(string receiver, object data)
         {
-            foreach (var item in subscribers.OfType<IListen<T2>>())
+            Dictionary<string, IListen> subs = new Dictionary<string, IListen>(subscribers);
+
+            foreach (var item in subs)
             {
-                item.Navigate(page, obj);
+                if (item.Key == receiver)
+                {
+                    item.Value.HandleNavigation(receiver, data);
+                }
             }
         }
     }

@@ -10,6 +10,6 @@ namespace MonedaClient.Model
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public Account Account { get; set; }
+        public List<Account> Accounts { get; set; }
     }
 }

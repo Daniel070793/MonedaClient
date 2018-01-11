@@ -55,27 +55,11 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Prism.Unity.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Unity.6.3.0\lib\net45\Prism.Unity.Wpf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.6.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -97,10 +81,12 @@
     <Compile Include="Utilities\AmountConverter.cs" />
     <Compile Include="Utilities\APIAccess.cs" />
     <Compile Include="Utilities\EventAggregator.cs" />
-    <Compile Include="Utilities\IAPIAccess.cs" />
-    <Compile Include="Utilities\IListen.cs" />
+    <Compile Include="Utilities\Interfaces\IEventAggregator.cs" />
+    <Compile Include="Utilities\Interfaces\IAPIAccess.cs" />
+    <Compile Include="Utilities\Interfaces\IListen.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="Viewmodels\DashboardViewmodel.cs" />
+    <Compile Include="Viewmodels\Interfaces\ILoginViewmodel.cs" />
     <Compile Include="Viewmodels\LoginViewmodel.cs" />
     <Compile Include="Viewmodels\ViewmodelBase.cs" />
     <Compile Include="Views\DashboardView.xaml.cs">

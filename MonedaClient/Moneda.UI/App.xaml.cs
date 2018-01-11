@@ -3,12 +3,6 @@ using Microsoft.Practices.Unity.Configuration;
 using Moneda.UI.Utilities;
 using Moneda.UI.Viewmodels;
 using Moneda.UI.Views;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Moneda.UI
@@ -22,9 +16,7 @@ namespace Moneda.UI
         {
             IUnityContainer container = new UnityContainer();
             container.RegisterType<IAPIAccess, APIAccess>();
-
-            //UnityConfigurationSection configSection = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
-            //configSection.Configure(container);
+            container.RegisterType<IEventAggregator, EventAggregator>();
 
             LoginView view = new LoginView();
             LoginViewmodel vm = container.Resolve<LoginViewmodel>();

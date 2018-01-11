@@ -1,46 +1,39 @@
 ﻿using Moneda.UI.Utilities;
+using Moneda.UI.Viewmodels;
 using MonedaClient.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Moneda.UI.Views
 {
     /// <summary>
     /// Interaction logic for DashboardView.xaml
     /// </summary>
-    public partial class DashboardView : Page, IListen<CashFlow>
+    public partial class DashboardView : Page, IListen
     {
         EventAggregator _eventAggregrator;
         public DashboardView()
         {
             InitializeComponent();
             _eventAggregrator = new EventAggregator();
-            _eventAggregrator.Subscribe(this);
+            _eventAggregrator.Subscribe("ViewCashFlowNav",this);
+            _eventAggregrator.Subscribe("DashboardError", this);
         }
 
-        public void DisplayMessage(string message)
+        public void HandleMessage(string data)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(data, "Fejl");
         }
 
-        public void Navigate(string page, CashFlow obj)
+        public void HandleNavigation(string message, object data)
         {
-            switch (page)
+            switch (message)
             {
-                case "ViewCashFlow":
-                    Window window = new ViewCashFlowView();
+                case "ViewCashFlowNav":
+                    _eventAggregrator.Unsubscribe(message);
+                    Window window = new ViewCashFlowView((DashboardViewmodel)data);
+                    //window.DataContext = (DashboardViewmodel)data;
                     window.ShowDialog();
                     break;
             }
