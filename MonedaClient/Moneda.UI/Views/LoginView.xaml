@@ -9,16 +9,16 @@
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="Login">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewmodel:LoginViewmodel></viewmodel:LoginViewmodel>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel>
             <Label Content="Username"/>
-            <TextBox Text="{Binding Username}"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Password"/>
-            <TextBox Text="{Binding Password}"/>
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Command="{Binding LoginCommand}" Content="Login"/>
             <Button Command="{Binding CreateCommand}" Content="Opret"/>
         </StackPanel>

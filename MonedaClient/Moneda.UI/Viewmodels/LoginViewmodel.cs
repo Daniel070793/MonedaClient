@@ -1,8 +1,10 @@
-﻿using Moneda.UI.Utilities;
+﻿using Microsoft.Practices.Unity;
+using Moneda.UI.Utilities;
 using Moneda.UI.Views;
 using MonedaClient.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -13,16 +15,16 @@ namespace Moneda.UI.Viewmodels
 {
     public class LoginViewmodel
     {
-        IAPIAccess API;
+        IAPIAccess _api;
 
         string _username;
         string _password;
 
         EventAggregator eventAggregator;
 
-        public LoginViewmodel()
+        public LoginViewmodel(IAPIAccess API)
         {
-            API = new APIAccess();
+            _api = API;
 
             LoginCommand = new RelayCommand(Login,CanLogin);
             CreateCommand = new RelayCommand(Create);
@@ -33,7 +35,7 @@ namespace Moneda.UI.Viewmodels
         {
             try
             {
-                await API.Post("login", new User { Username = _username, Password = _password });
+                await _api.Post("login", new User { Username = _username, Password = _password });
                 //TODO fiks navigation
                 eventAggregator.PublishNavigation("Dashboard", new User());
             }
@@ -58,7 +60,7 @@ namespace Moneda.UI.Viewmodels
             {
                 return true;
             }
-            return false; 
+            return false;
         }
         
 
@@ -75,5 +77,34 @@ namespace Moneda.UI.Viewmodels
             get { return _password; }
             set { _password = value; }
         }
+
+        [Dependency]
+        public IAPIAccess APIAccess
+        {
+            get { return _api; }
+            set { _api = value; }
+        }
+
+
+        //public string Error{ get; private set; }
+
+        //public string this[string columnName]
+        //{
+        //    get
+        //    {
+        //        if(columnName == "Username")
+        //        {
+        //            if (String.IsNullOrEmpty(Username))
+        //            {
+        //                Error = "Indtast brugernavn";
+        //            }
+        //            else
+        //            {
+        //                Error = null;
+        //            }                 
+        //        }
+        //        return Error;
+        //    }
+        //}
     }
 }
