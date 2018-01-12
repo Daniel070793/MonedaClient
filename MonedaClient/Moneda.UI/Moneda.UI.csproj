@@ -85,10 +85,14 @@
     <Compile Include="Utilities\Interfaces\IAPIAccess.cs" />
     <Compile Include="Utilities\Interfaces\IListen.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
+    <Compile Include="Viewmodels\CreateUserViewmodel.cs" />
     <Compile Include="Viewmodels\DashboardViewmodel.cs" />
     <Compile Include="Viewmodels\Interfaces\ILoginViewmodel.cs" />
     <Compile Include="Viewmodels\LoginViewmodel.cs" />
     <Compile Include="Viewmodels\ViewmodelBase.cs" />
+    <Compile Include="Views\CreateUserView.xaml.cs">
+      <DependentUpon>CreateUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -102,6 +106,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CreateUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

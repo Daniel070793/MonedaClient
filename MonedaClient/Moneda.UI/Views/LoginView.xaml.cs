@@ -24,6 +24,7 @@ namespace Moneda.UI.Views
             _eventAggregator = new EventAggregator();
             _eventAggregator.Subscribe("LoginViewError", this);
             _eventAggregator.Subscribe("Dashboard", this);
+            _eventAggregator.Subscribe("CreateUserNav", this);
         }
 
         public void HandleMessage(string data)
@@ -42,6 +43,11 @@ namespace Moneda.UI.Views
                     dashboard.DataContext = new DashboardViewmodel();             
                     Application.Current.MainWindow.Content = dashboard;
                     break;
+                case "CreateUserNav":
+                    CreateUserView view = new CreateUserView();
+                    Application.Current.MainWindow.Content = view;
+                    break;
+                    
             }
         }
     }

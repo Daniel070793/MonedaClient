@@ -18,14 +18,10 @@ namespace MonedaClient.Model
     }
     public enum FrequencyEnum
     {
-        [Description("Single")]
-        Single,
-        [Description("Single")]
-        Weekly,
-        [Description("Single")]
-        Monthly,
-        [Description("Single")]
-        Quarterly,
-        Yearly
+        Engang,
+        Ugentlig,
+        Månedlig,        
+        Kvartal,
+        Årlig
     }
 }

@@ -9,7 +9,10 @@ namespace Moneda.UI.Utilities
 
         public void Subscribe(string message, IListen subscriber)
         {
-            subscribers.Add(message,subscriber);
+            if(!subscribers.ContainsKey(message))
+            {
+                subscribers.Add(message, subscriber);
+            }
         }
 
         public void Unsubscribe(string message)

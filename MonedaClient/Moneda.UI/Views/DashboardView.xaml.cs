@@ -31,10 +31,10 @@ namespace Moneda.UI.Views
             switch (message)
             {
                 case "ViewCashFlowNav":
-                    _eventAggregrator.Unsubscribe(message);
                     Window window = new ViewCashFlowView((DashboardViewmodel)data);
-                    //window.DataContext = (DashboardViewmodel)data;
+
                     window.ShowDialog();
+                    CashFlowList.UnselectAll();
                     break;
             }
         }

@@ -39,7 +39,7 @@
         <StackPanel Grid.Row="2" >
             <Label Content="Faste overførsler" HorizontalAlignment="Center" FontSize="20"/>
             <Grid>
-                <ListView ItemsSource="{Binding FixedCashFlows}" SelectedItem="{Binding SelectedCashFlow}">
+                <ListView Name="CashFlowList" ItemsSource="{Binding FixedCashFlows}" SelectedItem="{Binding SelectedCashFlow}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Description}"/>
@@ -58,14 +58,14 @@
                 <ListView ItemsSource="{Binding SelectedAccount.Transactions}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Amount" Width="120">
+                            <GridViewColumn Header="Beløb" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Amount}" Foreground="{Binding Amount, Converter={StaticResource AmountColor}}"></TextBlock>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Description" Width="120" DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="Beskrivelse" Width="120" DisplayMemberBinding="{Binding Description}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

@@ -1,0 +1,26 @@
+﻿<Page x:Class="Moneda.UI.Views.CreateUserView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Moneda.UI.Views"
+      xmlns:viewmodel="clr-namespace:Moneda.UI.Viewmodels"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="CreateUserView">
+
+    <Page.DataContext>
+        <viewmodel:CreateUserViewmodel/>
+    </Page.DataContext>
+    
+    <StackPanel>
+        <Label Content="Brugernavn"/>
+        <TextBox Text="{Binding CurrentUser.Username , UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Content="Kodeord"/>
+        <TextBox Text="{Binding CurrentUser.Password, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Opret" Command="{Binding CreateCommand}"/>
+            <Button Content="Annullér" Click="Cancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

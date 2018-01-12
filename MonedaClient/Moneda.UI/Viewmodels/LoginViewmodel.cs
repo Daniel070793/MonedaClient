@@ -45,7 +45,7 @@ namespace Moneda.UI.Viewmodels
 
         void Create(object obj)
         {
-            //eventAggregator.Publish("Bruger oprettet");
+            _eventAggregator.PublishNavigation("CreateUserNav", "hej");
         }
 
         bool CanLogin(object obj)

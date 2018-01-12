@@ -50,7 +50,7 @@
         <!--Account-->
         <StackPanel Orientation="Horizontal">
             <Label Content="Konto"/>
-            <ComboBox ItemsSource="{Binding Accounts}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedAccount}"/>
+            <ComboBox ItemsSource="{Binding Accounts}" DisplayMemberPath="Name" SelectedValue="{Binding ComboSelectedAccount}"/>
             
         </StackPanel>
 
