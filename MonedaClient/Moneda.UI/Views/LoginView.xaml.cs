@@ -4,6 +4,7 @@ using MonedaClient.Model;
 using System.Windows;
 using System;
 using Moneda.UI.Viewmodels;
+using System.Windows.Controls;
 
 namespace Moneda.UI.Views
 {
@@ -11,14 +12,17 @@ namespace Moneda.UI.Views
     /// Interaction logic for LoginView.xaml
     /// </summary>
     /// 
-    
+
     //TODO: textbox focus fix
-    public partial class LoginView : Window, IListen
+    public partial class LoginView : Page, IListen
     {
+        static int _testnumber = 0;
         IEventAggregator _eventAggregator;
 
         public LoginView()
-        { 
+        {
+            _testnumber++;
+            Console.WriteLine(_testnumber);
             InitializeComponent();
 
             _eventAggregator = new EventAggregator();
@@ -37,13 +41,12 @@ namespace Moneda.UI.Views
             switch (message)
             {
                 case "Dashboard":
-                    _eventAggregator.Unsubscribe(message);
                     DashboardView dashboard = new DashboardView();
                     //TODO pass user to vm
                     dashboard.DataContext = new DashboardViewmodel();             
                     Application.Current.MainWindow.Content = dashboard;
                     break;
-                case "CreateUserNav":
+                case "CreateUserNav":                   
                     CreateUserView view = new CreateUserView();
                     Application.Current.MainWindow.Content = view;
                     break;

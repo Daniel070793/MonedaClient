@@ -14,13 +14,12 @@ namespace Moneda.UI
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            IUnityContainer container = new UnityContainer();
-            container.RegisterType<IAPIAccess, APIAccess>();
-            container.RegisterType<IEventAggregator, EventAggregator>();
-
-            LoginView view = new LoginView();
-            LoginViewmodel vm = container.Resolve<LoginViewmodel>();
-            view.DataContext = vm;
+            DependencyContainer container = DependencyContainer.GetInstance;
+            MainMoneda view = new MainMoneda();
+            LoginView loginview = new LoginView();
+            LoginViewmodel vm = container.Container.Resolve<LoginViewmodel>();
+            loginview.DataContext = vm;
+            view.Content = loginview;
             view.Show();
         }
     }

@@ -13,6 +13,10 @@ namespace Moneda.UI.Utilities
             {
                 subscribers.Add(message, subscriber);
             }
+            else
+            {
+                subscribers[message] = subscriber;
+            }
         }
 
         public void Unsubscribe(string message)

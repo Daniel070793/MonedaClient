@@ -78,8 +78,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Moneda.xaml.cs">
+      <DependentUpon>Moneda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\AmountConverter.cs" />
     <Compile Include="Utilities\APIAccess.cs" />
+    <Compile Include="Utilities\DependencyContainer.cs" />
     <Compile Include="Utilities\EventAggregator.cs" />
     <Compile Include="Utilities\Interfaces\IEventAggregator.cs" />
     <Compile Include="Utilities\Interfaces\IAPIAccess.cs" />
@@ -106,6 +110,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Moneda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
