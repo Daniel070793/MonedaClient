@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moneda.UI"
         mc:Ignorable="d"
-        Title="Moneda" Height="300" Width="300">
+        Title="Moneda" Height="800" Width="1000">
 </NavigationWindow>

@@ -12,12 +12,16 @@ namespace Moneda.UI
     /// </summary>
     public partial class App : Application
     {
+        
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            DependencyContainer container = DependencyContainer.GetInstance;
+            UnityContainer container = new UnityContainer();
+            container.RegisterType<IAPIAccess, APIAccess>();
+            container.RegisterType<IEventAggregator, EventAggregator>();
+
             MainMoneda view = new MainMoneda();
             LoginView loginview = new LoginView();
-            LoginViewmodel vm = container.Container.Resolve<LoginViewmodel>();
+            LoginViewmodel vm = container.Resolve<LoginViewmodel>();
             loginview.DataContext = vm;
             view.Content = loginview;
             view.Show();

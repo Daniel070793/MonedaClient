@@ -11,6 +11,7 @@ namespace Moneda.UI.Viewmodels
     {
         IAPIAccess _api;
         IEventAggregator _eventAggregator;
+        public static string CurrentUser;
 
         string _username;
         string _password;
@@ -19,6 +20,9 @@ namespace Moneda.UI.Viewmodels
         {
             _api = api;
             _eventAggregator = eventAggregator;
+
+            Username = "admin";
+            Password = "admin";
 
             LoginCommand = new RelayCommand(Login, CanLogin);
             CreateCommand = new RelayCommand(Create);
@@ -64,7 +68,11 @@ namespace Moneda.UI.Viewmodels
         public string Username
         {
             get { return _username; }
-            set { _username = value;}
+            set
+            {
+                _username = value;
+                CurrentUser = _username;
+            }
         }
         public string Password
         {

@@ -1,4 +1,5 @@
-﻿using Moneda.UI.Utilities;
+﻿using Microsoft.Practices.Unity;
+using Moneda.UI.Utilities;
 using Moneda.UI.Viewmodels;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,8 +40,12 @@ namespace Moneda.UI.Views
         public void NavigateBack()
         {
             //TODO: view skal have viewmodel til datacontext + IOC hell
-            DependencyContainer container = DependencyContainer.GetInstance;
-            LoginViewmodel vm = container.Container.Resolve<LoginViewmodel>();
+
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<IAPIAccess, APIAccess>();
+            container.RegisterType<IEventAggregator, EventAggregator>();
+
+            LoginViewmodel vm = container.Resolve<LoginViewmodel>();
             Application.Current.MainWindow.Content = new LoginView();
         }
     }
